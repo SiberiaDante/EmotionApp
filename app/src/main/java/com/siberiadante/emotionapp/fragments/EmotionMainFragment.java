@@ -64,7 +64,7 @@ public class EmotionMainFragment extends BaseFragment implements View.OnClickLis
                 .bindToEditText(((EditText) layout.findViewById(R.id.bar_edit_text)))//判断绑定那种EditView
                 .bindToEmotionButton(layout.findViewById(R.id.emotion_button))//绑定表情按钮
                 .build();
-        initDatas();
+        initData();
 //        点击表情的全局监听管理类
         GlobalOnItemClickManagerUtils globalOnItemClickManager = GlobalOnItemClickManagerUtils.getInstance(getActivity());
         //绑定EditText
@@ -105,7 +105,7 @@ public class EmotionMainFragment extends BaseFragment implements View.OnClickLis
         }
     }
 
-    private void initDatas() {
+    private void initData() {
         replaceFragment();
         List<ImageModel> list = new ArrayList<>();
         for (int i = 0; i < fragments.size(); i++) {
