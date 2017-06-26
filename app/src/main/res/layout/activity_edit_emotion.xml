@@ -1,0 +1,19 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_input_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        android:focusable="true"
+        android:gravity="top" />
+
+    <FrameLayout
+        android:id="@+id/fl_emotion_view_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
