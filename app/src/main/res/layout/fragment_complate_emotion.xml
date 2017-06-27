@@ -20,7 +20,7 @@
             />
     </LinearLayout>
 
-    <com.siberiadante.emotionapp.widget.EmojiIndicatorView
+    <com.siberiadante.emotionapp.widget.EmotionIndicatorView
         android:id="@+id/ll_point_group"
         android:layout_width="match_parent"
         android:layout_height="30dp"

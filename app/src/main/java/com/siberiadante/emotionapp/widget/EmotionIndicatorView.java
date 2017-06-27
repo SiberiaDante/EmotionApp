@@ -20,7 +20,7 @@ import java.util.ArrayList;
  * 博客园： http://www.cnblogs.com/shen-hua/
  */
 
-public class EmojiIndicatorView extends LinearLayout {
+public class EmotionIndicatorView extends LinearLayout {
 
     private Context mContext;
     private ArrayList<View> mImageViews ;//所有指示器集合
@@ -29,15 +29,15 @@ public class EmojiIndicatorView extends LinearLayout {
     private int pointSize ;//指示器的大小
     private int marginLeft;//间距
 
-    public EmojiIndicatorView(Context context) {
+    public EmotionIndicatorView(Context context) {
         this(context,null);
     }
 
-    public EmojiIndicatorView(Context context, AttributeSet attrs) {
+    public EmotionIndicatorView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public EmojiIndicatorView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public EmotionIndicatorView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mContext=context;
         pointSize= DisplayUtils.dp2px(context,size);

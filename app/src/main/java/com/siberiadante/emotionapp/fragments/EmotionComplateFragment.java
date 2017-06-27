@@ -15,7 +15,7 @@ import com.siberiadante.emotionapp.adapter.EmotionPagerAdapter;
 import com.siberiadante.emotionapp.utils.DisplayUtils;
 import com.siberiadante.emotionapp.utils.EmotionUtils;
 import com.siberiadante.emotionapp.utils.GlobalOnItemClickManagerUtils;
-import com.siberiadante.emotionapp.widget.EmojiIndicatorView;
+import com.siberiadante.emotionapp.widget.EmotionIndicatorView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,10 +30,10 @@ import java.util.List;
  * 博客园： http://www.cnblogs.com/shen-hua/
  */
 
-public class EmotiomComplateFragment extends BaseFragment {
+public class EmotionComplateFragment extends BaseFragment {
     private EmotionPagerAdapter emotionPagerGvAdapter;
     private ViewPager vp_complate_emotion_layout;
-    private EmojiIndicatorView ll_point_group;//表情面板对应的点列表
+    private EmotionIndicatorView ll_point_group;//表情面板对应的点列表
     private int emotion_map_type;
 
     /**
@@ -56,7 +56,7 @@ public class EmotiomComplateFragment extends BaseFragment {
      */
     protected void initView(View rootView){
         vp_complate_emotion_layout = (ViewPager) rootView.findViewById(R.id.vp_complate_emotion_layout);
-        ll_point_group= (EmojiIndicatorView) rootView.findViewById(R.id.ll_point_group);
+        ll_point_group= (EmotionIndicatorView) rootView.findViewById(R.id.ll_point_group);
         //获取map的类型
         emotion_map_type=args.getInt(FragmentFactory.EMOTION_MAP_TYPE);
         initEmotion();
@@ -108,7 +108,7 @@ public class EmotiomComplateFragment extends BaseFragment {
         List<GridView> emotionViews = new ArrayList<>();
         List<String> emotionNames = new ArrayList<>();
         // 遍历所有的表情的key
-        for (String emojiName : EmotionUtils.getEmojiMap(emotion_map_type).keySet()) {
+        for (String emojiName : EmotionUtils.getEmotionMap(emotion_map_type).keySet()) {
             emotionNames.add(emojiName);
             // 每20个表情作为一组,同时添加到ViewPager对应的view集合中
             if (emotionNames.size() == 20) {

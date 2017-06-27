@@ -51,6 +51,7 @@ public class EmotionMainFragment extends BaseFragment implements View.OnClickLis
     private List<Fragment> fragments = new ArrayList<>();
 
     private View contentView;
+    private EmotionKeyboard mEmotionKeyboard;
 
     @Nullable
     @Override
@@ -58,7 +59,7 @@ public class EmotionMainFragment extends BaseFragment implements View.OnClickLis
         View layout = inflater.inflate(R.layout.fragment_emotion_main, container, false);
         initView(layout);
         //初始化EmotionKeyboard
-        EmotionKeyboard mEmotionKeyboard = EmotionKeyboard.with(getActivity())
+        mEmotionKeyboard = EmotionKeyboard.with(getActivity())
                 .setEmotionView(layout.findViewById(R.id.ll_emotion_layout))//绑定表情面板
                 .bindToContent(contentView)//绑定内容view
                 .bindToEditText(((EditText) layout.findViewById(R.id.bar_edit_text)))//判断绑定那种EditView
@@ -168,7 +169,7 @@ public class EmotionMainFragment extends BaseFragment implements View.OnClickLis
         //创建fragment的工厂类
         FragmentFactory factory = FragmentFactory.getSingleFactoryInstance();
         //创建修改实例
-        EmotiomComplateFragment f1 = (EmotiomComplateFragment) factory.getFragment(EmotionUtils.EMOTION_CLASSIC_TYPE);
+        EmotionComplateFragment f1 = (EmotionComplateFragment) factory.getFragment(EmotionUtils.EMOTION_CLASSIC_TYPE);
         fragments.add(f1);
         Bundle b = null;
         for (int i = 0; i < 7; i++) {
@@ -182,5 +183,14 @@ public class EmotionMainFragment extends BaseFragment implements View.OnClickLis
         mNoHorizontalVP.setAdapter(adapter);
     }
 
+    /**
+     * 是否拦截返回键操作，如果此时表情布局未隐藏，先隐藏表情布局
+     *
+     * @return true则隐藏表情布局，拦截返回键操作
+     * false 则不拦截返回键操作
+     */
+    public boolean isInterceptBackPress() {
+        return mEmotionKeyboard.interceptBackPress();
+    }
 
 }

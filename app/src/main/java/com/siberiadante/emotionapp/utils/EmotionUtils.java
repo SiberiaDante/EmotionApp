@@ -2,6 +2,7 @@
 package com.siberiadante.emotionapp.utils;
 
 import android.support.v4.util.ArrayMap;
+import android.util.Log;
 
 import com.siberiadante.emotionapp.R;
 
@@ -20,6 +21,7 @@ public class EmotionUtils {
      * 表情类型标志符
      */
     public static final int EMOTION_CLASSIC_TYPE = 0x0001;//经典表情
+    private static final String TAG = EmotionUtils.class.getSimpleName();
 
     /**
      * key-表情文字;
@@ -136,7 +138,7 @@ public class EmotionUtils {
                 integer = EMOTION_CLASSIC_MAP.get(imgName);
                 break;
             default:
-                LogUtils.e("the emojiMap is null!! Handle Yourself ");
+                Log.e(TAG, "getImgByName: the emotionMap is null!! Handle Yourself ");
                 break;
         }
         return integer == null ? -1 : integer;
@@ -148,7 +150,7 @@ public class EmotionUtils {
      * @param EmotionType
      * @return
      */
-    public static ArrayMap<String, Integer> getEmojiMap(int EmotionType) {
+    public static ArrayMap<String, Integer> getEmotionMap(int EmotionType) {
         ArrayMap EmojiMap = null;
         switch (EmotionType) {
             case EMOTION_CLASSIC_TYPE:

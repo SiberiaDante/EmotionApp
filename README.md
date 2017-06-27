@@ -20,6 +20,6 @@ Android表情软键盘切换
 1、表情的类型；2、上下文；3、控件；4、EditText中的内容；
 
 ----
-*参考资料：[emotionkeyboard]
+*参考：[emotionkeyboard]
 
 [emotionkeyboard]:https://github.com/shinezejian/emotionkeyboard

@@ -22,7 +22,7 @@ public class FragmentOther extends BaseFragment {
         View rootView= LayoutInflater.from(getActivity()).inflate(R.layout.fragment1,null);
         TextView tv= (TextView) rootView.findViewById(R.id.tv);
 
-        tv.setText(args.getString("Interge"));
+        tv.setText(args.getString("Integer"));
         return rootView ;
     }
 }

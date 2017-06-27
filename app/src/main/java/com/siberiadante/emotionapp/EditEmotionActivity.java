@@ -4,9 +4,11 @@ import android.content.pm.ActivityInfo;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.widget.TextView;
 
 import com.siberiadante.emotionapp.fragments.EmotionMainFragment;
+import com.siberiadante.emotionapp.widget.EmotionKeyboard;
 
 /**
  * Created by SiberiaDante
@@ -39,12 +41,24 @@ public class EditEmotionActivity extends AppCompatActivity {
         initEmotionMainFragment();
     }
 
+    EmotionMainFragment emotionMainFragment;
+
     private void initEmotionMainFragment() {
-        EmotionMainFragment emotionMainFragment = EmotionMainFragment.newInstance(EmotionMainFragment.class, null);
+        emotionMainFragment = EmotionMainFragment.newInstance(EmotionMainFragment.class, null);
         emotionMainFragment.bindToContentView(mTvContent);//绑定当前页面控件
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fl_emotion_view_main, emotionMainFragment);
-        transaction.addToBackStack(null);
+//        transaction.addToBackStack(null);//fragment添加至回退栈中
         transaction.commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        /**
+         * 按下返回键，如果表情显示，则隐藏，没有显示则回退页面
+         */
+        if (!emotionMainFragment.isInterceptBackPress()) {
+            super.onBackPressed();
+        }
     }
 }
