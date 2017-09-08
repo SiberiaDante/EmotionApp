@@ -156,7 +156,7 @@ public class EmotionComplateFragment extends BaseFragment {
         EmotionGridViewAdapter adapter = new EmotionGridViewAdapter(getActivity(), emotionNames, itemWidth,emotion_map_type);
         gv.setAdapter(adapter);
         //设置全局点击事件
-        gv.setOnItemClickListener(GlobalOnItemClickManagerUtils.getInstance(getActivity()).getOnItemClickListener(emotion_map_type));
+        gv.setOnItemClickListener(GlobalOnItemClickManagerUtils.getInstance().getOnItemClickListener(getActivity(),emotion_map_type));
         return gv;
     }
 

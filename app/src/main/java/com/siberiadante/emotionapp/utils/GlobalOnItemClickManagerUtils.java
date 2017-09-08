@@ -20,13 +20,13 @@ public class GlobalOnItemClickManagerUtils {
 
     private static GlobalOnItemClickManagerUtils instance;
     private EditText mEditText;//输入框
-    private static Context mContext;
+//    private static Context mContext;
 
-    public static GlobalOnItemClickManagerUtils getInstance(Context context) {
-        mContext=context;
+    public static GlobalOnItemClickManagerUtils getInstance() {
+//        mContext=context;
         if (instance == null) {
             synchronized (GlobalOnItemClickManagerUtils.class) {
-                if(instance == null) {
+                if (instance == null) {
                     instance = new GlobalOnItemClickManagerUtils();
                 }
             }
@@ -34,11 +34,21 @@ public class GlobalOnItemClickManagerUtils {
         return instance;
     }
 
+    /*
+    绑定EditText
+     */
     public void attachToEditText(EditText editText) {
         mEditText = editText;
     }
 
-    public AdapterView.OnItemClickListener getOnItemClickListener(final int emotion_map_type) {
+    /*
+
+     */
+    public void unAttachToEditText() {
+        mEditText = null;
+    }
+
+    public AdapterView.OnItemClickListener getOnItemClickListener(final Context context, final int emotion_map_type) {
         return new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -63,7 +73,7 @@ public class GlobalOnItemClickManagerUtils {
 
                         // 特殊文字处理,将表情等转换一下
                         mEditText.setText(SpanStringUtils.getEmotionContent(emotion_map_type,
-                                mContext, mEditText, sb.toString()));
+                                context, mEditText, sb.toString()));
 
                         // 将光标设置到新增完表情的右侧
                         mEditText.setSelection(curPosition + emotionName.length());

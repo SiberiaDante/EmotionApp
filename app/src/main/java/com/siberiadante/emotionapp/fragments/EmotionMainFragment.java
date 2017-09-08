@@ -52,6 +52,7 @@ public class EmotionMainFragment extends BaseFragment implements View.OnClickLis
 
     private View contentView;
     private EmotionKeyboard mEmotionKeyboard;
+    private GlobalOnItemClickManagerUtils globalOnItemClickManager;
 
     @Nullable
     @Override
@@ -67,7 +68,7 @@ public class EmotionMainFragment extends BaseFragment implements View.OnClickLis
                 .build();
         initData();
 //        点击表情的全局监听管理类
-        GlobalOnItemClickManagerUtils globalOnItemClickManager = GlobalOnItemClickManagerUtils.getInstance(getActivity());
+        globalOnItemClickManager = GlobalOnItemClickManagerUtils.getInstance();
         //绑定EditText
         globalOnItemClickManager.attachToEditText(mEdtContent);
         return layout;
@@ -193,4 +194,9 @@ public class EmotionMainFragment extends BaseFragment implements View.OnClickLis
         return mEmotionKeyboard.interceptBackPress();
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        globalOnItemClickManager.unAttachToEditText();
+    }
 }
